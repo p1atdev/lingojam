@@ -106,7 +106,7 @@ const Page = ({ episode }: Props) => {
                             <Tbody>
                                 {episode.words.map((word) => {
                                     return (
-                                        <Tr>
+                                        <Tr key={word.word.en}>
                                             <Td>{word.word.en}</Td>
                                             <Td>{word.meaning.en}</Td>
                                         </Tr>
@@ -156,7 +156,11 @@ const Page = ({ episode }: Props) => {
                         Answer -答え-
                     </Text>
                     {episode.answer.map((sentence) => {
-                        return <Text my={"2"}>{sentence.en}</Text>
+                        return (
+                            <Text my={"2"} key={sentence.en}>
+                                {sentence.en}
+                            </Text>
+                        )
                     })}
                 </Box>
             </Container>
