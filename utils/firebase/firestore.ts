@@ -22,3 +22,13 @@ export const getEpisodes = async (): Promise<EpisodeMedia[]> => {
 
     return episodeMedias
 }
+
+export const getEpisode = async (pid: string): Promise<EpisodeMedia> => {
+    const episode = await episodesRef
+        .where("pid", "==", pid)
+        .get()
+        .then((collection) => collection.docs[0].data() as Episode)
+
+    const media = await getMedia(episode.pid, episode.vid)
+    return { ...episode, videoUrl: media }
+}
