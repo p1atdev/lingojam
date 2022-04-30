@@ -16,6 +16,9 @@ import {
 import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next"
 import { useEffect, useState } from "react"
 import { PlayerProvider } from "../../components/context/player"
+import EpisodeCategory from "../../components/episode/category"
+import EpisodeQuestion from "../../components/episode/question"
+import EpisodeWords from "../../components/episode/words"
 import FooterPlayer from "../../components/player/footerPlayer"
 import Player from "../../components/Video"
 import { EpisodeMedia } from "../../types/episode"
@@ -103,59 +106,14 @@ const Page = ({ episode }: Props) => {
                                 </Text>
                             </Box>
 
-                            <Box my={"8"}>
-                                <Text as={"p"} fontSize={"2xl"} fontWeight={"bold"}>
-                                    Category -カテゴリ-
-                                </Text>
-                                <Text as={"p"} fontSize={"xl"}>
-                                    {episode.category.en}
-                                </Text>
-                                <Text as={"p"} fontSize={"xl"}>
-                                    {episode.category.ja}
-                                </Text>
-                            </Box>
+                            {/* カテゴリ */}
+                            <EpisodeCategory episode={episode} />
 
-                            <Box my={"8"}>
-                                <Text as={"p"} fontSize={"2xl"} fontWeight={"bold"}>
-                                    Key Phrase -キーフレーズ-
-                                </Text>
-                                <TableContainer>
-                                    <Table variant="simple">
-                                        {/* <TableCaption>Imperial to metric conversion factors</TableCaption> */}
-                                        <Thead>
-                                            <Tr>
-                                                <Th>Word</Th>
-                                                <Th>Meaning</Th>
-                                            </Tr>
-                                        </Thead>
-                                        <Tbody>
-                                            {episode.words.map((word) => {
-                                                return (
-                                                    <Tr key={word.word.en}>
-                                                        <Td>{word.word.en}</Td>
-                                                        <Td>{word.meaning.en}</Td>
-                                                    </Tr>
-                                                )
-                                            })}
-                                        </Tbody>
-                                        <Tfoot>
-                                            <Tr>
-                                                <Th>Word</Th>
-                                                <Th>Meaning</Th>
-                                            </Tr>
-                                        </Tfoot>
-                                    </Table>
-                                </TableContainer>
-                            </Box>
+                            {/* 単語 */}
+                            <EpisodeWords episode={episode} />
 
-                            <Box my={"8"}>
-                                <Text as={"p"} fontSize={"2xl"} fontWeight={"bold"}>
-                                    Question -問題-
-                                </Text>
-                                <Text as={"p"} fontSize={"xl"}>
-                                    {episode.question.en}
-                                </Text>
-                            </Box>
+                            {/* 問題 */}
+                            <EpisodeQuestion episode={episode} />
 
                             <Box my={"8"}>
                                 <Text as={"p"} fontSize={"2xl"} fontWeight={"bold"}>
