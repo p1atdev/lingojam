@@ -27,7 +27,7 @@ const EpisodeTranscript = ({ episode }: Props) => {
 
             {episode.transcript.sentences.map((sentence) => {
                 return (
-                    <Box my={"2"} key={sentence.text.en}>
+                    <Box my={"4"} key={sentence.text.en}>
                         <Text
                             my={sentence.type === "heading" ? "3" : "2"}
                             as={"p"}
