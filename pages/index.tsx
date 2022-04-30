@@ -1,5 +1,5 @@
 import { Box, Center, Container, Grid, GridItem, Text } from "@chakra-ui/react"
-import type { GetServerSidePropsContext } from "next"
+import type { GetServerSidePropsContext, GetStaticProps } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import Player from "../components/Video"
@@ -10,7 +10,8 @@ type Props = {
     episodes: EpisodeMedia[]
 }
 
-export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
+// export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
+export const getStaticProps: GetStaticProps = async (ctx) => {
     const episodes = await getEpisodes()
 
     return {
@@ -31,7 +32,12 @@ const Page = ({ episodes }: Props) => {
                                 <a>
                                     <Box maxW={"80"}>
                                         {/* <Player url={episode.videoUrl} /> */}
-                                        <Image src={episode.thumbnailUrl} width={640} height={360} />
+                                        <Image
+                                            src={episode.thumbnailUrl}
+                                            width={640}
+                                            height={360}
+                                            alt={episode.title.en}
+                                        />
                                         {/* <p>{episode.thumbnailUrl}</p> */}
 
                                         <Text as={"h3"} fontSize={"large"} fontWeight={"semibold"}>

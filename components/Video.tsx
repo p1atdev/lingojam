@@ -1,6 +1,7 @@
-import { Box, Button, Text } from "@chakra-ui/react"
-import { useState } from "react"
+import { Box, Button, Center, Text } from "@chakra-ui/react"
+import { useContext, useEffect, useRef, useState } from "react"
 import ReactPlayer from "react-player"
+import { PlayerContext } from "./context/player"
 
 type Props = {
     // videoUrl: string
@@ -9,20 +10,31 @@ type Props = {
 }
 
 const Player = ({ url }: Props) => {
-    const [playing, setPlaying] = useState(false)
+    const { playing, togglePlaying, setPlayed, seekTo, setDuration, timestamp, setTimestamp } =
+        useContext(PlayerContext)
+    const ref = useRef<ReactPlayer>(null)
+
+    useEffect(() => {
+        if (ref.current) {
+            ref.current.seekTo(seekTo)
+        }
+    }, [seekTo])
 
     return (
-        <div>
-            <ReactPlayer url={url} playing={playing} />
-
-            <Button
-                onClick={() => {
-                    setPlaying(!playing)
+        <Center maxW={["xs", "md", "lg", "xl"]}>
+            <ReactPlayer
+                ref={ref}
+                url={url}
+                playing={playing}
+                onDuration={(value) => {
+                    setDuration(value)
                 }}
-            >
-                {playing ? "Pause" : "Play"}
-            </Button>
-        </div>
+                onProgress={(e) => {
+                    setPlayed(e.played)
+                    setTimestamp(e.playedSeconds)
+                }}
+            />
+        </Center>
     )
 }
 

@@ -1284,6 +1284,11 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz#b520529ec21d8e5945a1851dfd1c32e94e39ff45"
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
+"@iconify/react@^3.2.1":
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/@iconify/react/-/react-3.2.1.tgz#d18da31cec58c1aa8fdf4def451cc7e3196d88de"
+  integrity sha512-yKzixjC9ct9RC/aSGo1OGxkG2rpfhlr/urRz6k2YZlIBzn92PBTlqtSx8o8dFYEorr3eUFSCBZFzBy1yw5jsAA==
+
 "@next/env@12.1.5":
   version "12.1.5"
   resolved "https://registry.yarnpkg.com/@next/env/-/env-12.1.5.tgz#a21ba6708022d630402ca2b340316e69a0296dfc"
@@ -2134,6 +2139,11 @@ date-and-time@^2.0.0:
   resolved "https://registry.yarnpkg.com/date-and-time/-/date-and-time-2.3.1.tgz#006675ec4943a0a5f85810e3a3fd6aa96f6130c9"
   integrity sha512-OaIRmSJXifwEN21rMVVDs0Kz8uhJ3wWPYd86atkRiqN54liaMQYEbbrgjZQea75YXOBWL4ZFb3rG/waenw1TEg==
 
+date-fns@^2.28.0:
+  version "2.28.0"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.28.0.tgz#9570d656f5fc13143e50c975a3b6bbeb46cd08b2"
+  integrity sha512-8d35hViGYx/QH0icHYCeLmsLmMUheMmTyV9Fcm6gvNwdw31yXXH+O85sOBJ+OLnLQMKZowvpKb6FgMIQjcpvQw==
+
 debug@4, debug@^4.1.0, debug@^4.1.1, debug@^4.3.2:
   version "4.3.4"
   resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.4.tgz#1319f6579357f2338d3337d2cdd4914bb5dcc865"
@@ -2719,10 +2729,10 @@ form-data@^4.0.0:
     combined-stream "^1.0.8"
     mime-types "^2.1.12"
 
-framer-motion@^6:
-  version "6.3.1"
-  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-6.3.1.tgz#943216b90c7de77d3483359a0ef535ca4882a1f6"
-  integrity sha512-c4NX/XHkQIJdn9V+Yz55WZSPlpracyzFe50up5Vr/V4pxKA7q6t9WgISDo8VgQxuJf8vKPr01ka3UuUllw7zSg==
+framer-motion@^6.3.3:
+  version "6.3.3"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-6.3.3.tgz#58978fe6955d13000351ea4c134c9bc052638967"
+  integrity sha512-wo0dCnoq5vn4L8YVOPO9W54dliH78vDaX0Lj+bSPUys6Nt5QaehrS3uaYa0q5eVeikUgtTjz070UhQ94thI5Sw==
   dependencies:
     framesync "6.0.1"
     hey-listen "^1.0.8"
