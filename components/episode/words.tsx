@@ -30,9 +30,9 @@ const EpisodeWords = ({ episode }: Props) => {
                     <Thead>
                         <Tr>
                             <Th>Word</Th>
-                            {showJa ? <Th>訳</Th> : null}
+                            {showJa && <Th>訳</Th>}
                             <Th>Meaning</Th>
-                            {showJa ? <Th>意味</Th> : null}
+                            {showJa && <Th>意味</Th>}
                         </Tr>
                     </Thead>
                     <Tbody>
@@ -50,9 +50,9 @@ const EpisodeWords = ({ episode }: Props) => {
                     <Tfoot>
                         <Tr>
                             <Th>Word</Th>
-                            {showJa ? <Th>訳</Th> : null}
+                            {showJa && <Th>訳</Th>}
                             <Th>Meaning</Th>
-                            {showJa ? <Th>意味</Th> : null}
+                            {showJa && <Th>意味</Th>}
                         </Tr>
                     </Tfoot>
                 </Table>

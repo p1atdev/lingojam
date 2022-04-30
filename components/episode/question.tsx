@@ -15,13 +15,13 @@ const EpisodeQuestion = ({ episode }: Props) => {
             <Text as={"p"} fontSize={"2xl"} fontWeight={"bold"}>
                 Question -問題-
             </Text>
-            <Text as={"p"} fontSize={"xl"}>
+            <Text as={"p"} fontSize={"lg"}>
                 {episode.question.en}
             </Text>
             {showJa ? (
                 <motion.div animate={{ opacity: [20, 100] }} transition={{ ease: "easeInOut", duration: 0.2 }}>
                     <HStack>
-                        <Text as={"p"} fontSize={"xl"}>
+                        <Text as={"p"} fontSize={"lg"}>
                             訳: {episode.question.ja}
                         </Text>
 

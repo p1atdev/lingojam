@@ -1,4 +1,4 @@
-import { Box, Button, Text } from "@chakra-ui/react"
+import { Box, Button, Center, Text } from "@chakra-ui/react"
 import { useContext, useEffect, useRef, useState } from "react"
 import ReactPlayer from "react-player"
 import { PlayerContext } from "./context/player"
@@ -21,7 +21,7 @@ const Player = ({ url }: Props) => {
     }, [seekTo])
 
     return (
-        <div>
+        <Center maxW={["xs", "md", "lg", "xl"]}>
             <ReactPlayer
                 ref={ref}
                 url={url}
@@ -34,7 +34,7 @@ const Player = ({ url }: Props) => {
                     setTimestamp(e.playedSeconds)
                 }}
             />
-        </div>
+        </Center>
     )
 }
 

@@ -45,8 +45,12 @@ const FooterPlayer = () => {
         })
     })
 
+    useEffect(() => {
+        setSliderValue(played * 100)
+    }, [played])
+
     return (
-        <Container maxW={"container.lg"} pb={"2"} px={"8"} w={"full"}>
+        <Container maxW={"container.lg"} pb={"2"} px={["2", "4", "8"]} w={"full"}>
             <HStack w={"full"}>
                 <Center p={"4"}>
                     <Button
@@ -63,7 +67,6 @@ const FooterPlayer = () => {
                         aria-label="slider-ex-1"
                         value={sliderValue}
                         onChange={(value) => {
-                            setSliderValue(value)
                             setSeekTo(value / 100)
                             setPlayed(value / 100)
                         }}

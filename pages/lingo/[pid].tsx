@@ -1,23 +1,12 @@
-import {
-    Box,
-    Center,
-    Container,
-    Table,
-    TableCaption,
-    TableContainer,
-    Tbody,
-    Td,
-    Text,
-    Tfoot,
-    Th,
-    Thead,
-    Tr,
-} from "@chakra-ui/react"
+import { Box, Center, Container, Text } from "@chakra-ui/react"
 import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next"
+import Link from "next/link"
 import { useEffect, useState } from "react"
 import { PlayerProvider } from "../../components/context/player"
+import EpisodeAnswer from "../../components/episode/answer"
 import EpisodeCategory from "../../components/episode/category"
 import EpisodeQuestion from "../../components/episode/question"
+import EpisodeTranscript from "../../components/episode/transcript"
 import EpisodeWords from "../../components/episode/words"
 import FooterPlayer from "../../components/player/footerPlayer"
 import Player from "../../components/Video"
@@ -82,8 +71,16 @@ const Page = ({ episode }: Props) => {
         <PlayerProvider>
             <Box h={"screen"}>
                 <Center>
-                    <Box>
-                        <Container py={"20"} maxW={"container.md"}>
+                    <Box maxW={["sm", "md", "2xl"]}>
+                        <Container pt={"10"} pb={"20"} maxW={["container.sm", "container.md"]}>
+                            <Link href={"/"}>
+                                <a>
+                                    <Text fontSize={"2xl"} fontWeight={"bold"} borderBottom={{ hover: "1" }}>
+                                        Lingojam
+                                    </Text>
+                                </a>
+                            </Link>
+
                             <Box my={"8"}>
                                 <Text as={"h1"} fontSize={"3xl"} fontWeight={"black"}>
                                     {episode.title.en}
@@ -93,7 +90,7 @@ const Page = ({ episode }: Props) => {
                                 </Text>
                             </Box>
 
-                            <Center p={"auto"}>
+                            <Center>
                                 <Player url={episode.videoUrl} />
                             </Center>
 
@@ -115,39 +112,11 @@ const Page = ({ episode }: Props) => {
                             {/* 問題 */}
                             <EpisodeQuestion episode={episode} />
 
-                            <Box my={"8"}>
-                                <Text as={"p"} fontSize={"2xl"} fontWeight={"bold"}>
-                                    Transcript -書き起こし-
-                                </Text>
-                                {episode.transcript.sentences.map((sentence) => {
-                                    return (
-                                        <Text
-                                            my={sentence.type === "heading" ? "3" : "2"}
-                                            as={"p"}
-                                            fontSize={sentence.type === "heading" ? "xl" : "md"}
-                                            fontWeight={sentence.type === "heading" ? "semibold" : "normal"}
-                                            key={sentence.text.en}
-                                        >
-                                            {sentence.text.en}
-                                        </Text>
-                                    )
-                                })}
-                            </Box>
+                            {/* 書き起こし */}
+                            <EpisodeTranscript episode={episode} />
 
-                            <Box>
-                                <Text as={"p"} fontSize={"2xl"} fontWeight={"bold"}>
-                                    Answer -答え-
-                                </Text>
-                                <div>
-                                    {episode.answer.map((sentence) => {
-                                        return (
-                                            <Text my={"2"} key={sentence.en}>
-                                                {sentence.en}
-                                            </Text>
-                                        )
-                                    })}
-                                </div>
-                            </Box>
+                            {/* 答え */}
+                            <EpisodeAnswer episode={episode} />
                         </Container>
                     </Box>
                 </Center>
