@@ -1,5 +1,5 @@
 import { Box, Button, Text } from "@chakra-ui/react"
-import { useContext, useState } from "react"
+import { useContext, useEffect, useRef, useState } from "react"
 import ReactPlayer from "react-player"
 import { PlayerContext } from "./context/player"
 
@@ -10,11 +10,30 @@ type Props = {
 }
 
 const Player = ({ url }: Props) => {
-    const { playing, togglePlaying } = useContext(PlayerContext)
+    const { playing, togglePlaying, setPlayed, seekTo, setDuration, timestamp, setTimestamp } =
+        useContext(PlayerContext)
+    const ref = useRef<ReactPlayer>(null)
+
+    useEffect(() => {
+        if (ref.current) {
+            ref.current.seekTo(seekTo)
+        }
+    }, [seekTo])
 
     return (
         <div>
-            <ReactPlayer url={url} playing={playing} />
+            <ReactPlayer
+                ref={ref}
+                url={url}
+                playing={playing}
+                onDuration={(value) => {
+                    setDuration(value)
+                }}
+                onProgress={(e) => {
+                    setPlayed(e.played)
+                    setTimestamp(e.playedSeconds)
+                }}
+            />
 
             <Button
                 onClick={() => {
