@@ -1,6 +1,7 @@
 import { Box, Button, Text } from "@chakra-ui/react"
-import { useState } from "react"
+import { useContext, useState } from "react"
 import ReactPlayer from "react-player"
+import { PlayerContext } from "./context/player"
 
 type Props = {
     // videoUrl: string
@@ -9,7 +10,7 @@ type Props = {
 }
 
 const Player = ({ url }: Props) => {
-    const [playing, setPlaying] = useState(false)
+    const { playing, togglePlaying } = useContext(PlayerContext)
 
     return (
         <div>
@@ -17,7 +18,7 @@ const Player = ({ url }: Props) => {
 
             <Button
                 onClick={() => {
-                    setPlaying(!playing)
+                    togglePlaying()
                 }}
             >
                 {playing ? "Pause" : "Play"}

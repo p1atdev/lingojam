@@ -1,6 +1,7 @@
-import { GetServerSidePropsContext } from "next"
+import { GetStaticProps } from "next"
 
-export const getServerSideProps = (ctx: GetServerSidePropsContext) => {
+// export const getServerSideProps = (ctx: GetServerSidePropsContext) => {
+export const getStaticProps: GetStaticProps = async (ctx) => {
     return {
         redirect: {
             destination: "/",
