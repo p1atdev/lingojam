@@ -15,11 +15,12 @@ const EpisodeCategory = ({ episode }: Props) => {
             <Text as={"p"} fontSize={"2xl"} fontWeight={"bold"}>
                 Category -カテゴリ-
             </Text>
+
             <Text as={"p"} fontSize={"xl"}>
                 {episode.category.en}
             </Text>
-            {showJa ? (
-                <motion.div animate={{ opacity: [20, 100] }} transition={{ ease: "easeInOut", duration: 0.2 }}>
+            <Box my={"2"}>
+                {showJa ? (
                     <HStack>
                         <Text as={"p"} fontSize={"xl"}>
                             訳: {episode.category.ja}
@@ -31,17 +32,17 @@ const EpisodeCategory = ({ episode }: Props) => {
                             }}
                         />
                     </HStack>
-                </motion.div>
-            ) : (
-                <Button
-                    variant="outline"
-                    onClick={() => {
-                        setShowJa(true)
-                    }}
-                >
-                    日本語訳を表示
-                </Button>
-            )}
+                ) : (
+                    <Button
+                        variant="outline"
+                        onClick={() => {
+                            setShowJa(true)
+                        }}
+                    >
+                        日本語訳を表示
+                    </Button>
+                )}
+            </Box>
         </Box>
     )
 }

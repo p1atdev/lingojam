@@ -1,4 +1,5 @@
 import { Box, Center, Container, Grid, GridItem, Text } from "@chakra-ui/react"
+import { compareDesc, format, parse } from "date-fns"
 import type { GetServerSidePropsContext, GetStaticProps } from "next"
 import Image from "next/image"
 import Link from "next/link"
@@ -16,7 +17,9 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 
     return {
         props: {
-            episodes: JSON.parse(JSON.stringify(episodes.reverse())),
+            episodes: episodes.sort((a, b) => {
+                return compareDesc(parse(a.date, "yyyy/MM/dd", new Date()), parse(b.date, "yyyy/MM/dd", new Date()))
+            }),
         },
     }
 }
@@ -39,6 +42,9 @@ const Page = ({ episodes }: Props) => {
                                             alt={episode.title.en}
                                         />
                                         {/* <p>{episode.thumbnailUrl}</p> */}
+                                        <Text as={"p"} opacity={"75"} fontSize={"xs"}>
+                                            {episode.date}
+                                        </Text>
 
                                         <Text as={"h3"} fontSize={"large"} fontWeight={"semibold"}>
                                             {episode.title.en}
