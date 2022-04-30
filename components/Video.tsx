@@ -34,14 +34,6 @@ const Player = ({ url }: Props) => {
                     setTimestamp(e.playedSeconds)
                 }}
             />
-
-            <Button
-                onClick={() => {
-                    togglePlaying()
-                }}
-            >
-                {playing ? "Pause" : "Play"}
-            </Button>
         </div>
     )
 }

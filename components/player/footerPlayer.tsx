@@ -36,8 +36,17 @@ const FooterPlayer = () => {
         return `${time.minutes?.toString().padStart(2, "0")}:${time.seconds?.toString().padStart(2, "0")}`
     }
 
+    useEffect(() => {
+        document.addEventListener("keydown", (e) => {
+            if (e.key === " ") {
+                e.preventDefault()
+                togglePlaying()
+            }
+        })
+    })
+
     return (
-        <Container maxW={"container.lg"} w={"full"}>
+        <Container maxW={"container.lg"} pb={"2"} px={"8"} w={"full"}>
             <HStack w={"full"}>
                 <Center p={"4"}>
                     <Button
